@@ -16,19 +16,26 @@ void setup()
   
 void loop()
 {
-  if(loopCount== 0){
-    Forward();
-  } 
-  if(loopCount== 1){
-    Left90();
-  }
-  if(loopCount== 2){
-    Right90();
-  }
-  ST0.write(82);
-  ST1.write(82);
-  loopCount++;
+  backup();
+  Stop();
+//  if(loopCount== 0){
+//    Forward();
+//  } 
+//  if(loopCount== 1){
+//    turn180();
+//  }
+//  if(loopCount== 2){
+//    backup();
+//  }
+//  ST0.write(82);
+//  ST1.write(82);
+//  loopCount++;
 }
+
+
+//directions 0 -180
+//80-84 stop
+//
   
 void Left90()
 {
@@ -46,9 +53,9 @@ void Right90()
  delay(2120);
 }
 
-void Forward()
+void Backward()
 {
-  Serial.print("Forward");
+  Serial.print("Backward");
   ST0.write(60);
   ST1.write(60);
  delay(1800);
@@ -74,12 +81,49 @@ void right45()
   
   }
 
-
-void Forward()
+void test()
 {
-   Serial.print("Forward");
-  ST0.write(60);
-  ST1.write(60);
+    Serial.print("Forward");
+  ST0.write(90);
+  ST1.write(70);
+  delay(1800);
+  
+}
+
+
+void Stop()
+{
+   Serial.print("Stop");
+  ST0.write(80);
+  ST1.write(80);
  delay(1800);
   
   }
+  
+void Forward()
+{
+   Serial.print("Forward");
+  ST0.write(100.5);
+  ST1.write(100);
+ delay(1800);
+  
+  }
+
+void turn180()
+{
+  Serial.print("right");
+  ST0.write(65);
+  ST1.write(98);
+ delay(3350);
+  
+}
+
+
+void backup()
+{
+  Serial.print("backup");
+  ST0.write(60);
+  ST1.write(60);
+ delay(1850);
+
+}
